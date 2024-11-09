@@ -1,0 +1,42 @@
+extends ../../layouts/default.pug
+include ../../minxins/filter-status.pug
+include ../../minxins/search.pug
+include ../../minxins/pagination.pug
+include ../../minxins/fom-changeMulti.pug
+include ../../minxins/alert.pug
+include ../../minxins/table-tree.pug
+
+
+block main
+    h1 Danh mục sản phẩm
+
+    .card.mb-4 
+        .card-header Danh sách sản phẩm
+            .card-body
+                .row 
+                    .col-8
+                    .col-4 
+                        a(
+                            href=`${prefixAdmin}/products-category/create`
+                            class="btn btn-outline-success"
+                        ) + Thêm mới 
+
+                table(
+                    class="table.table-hover.table-sm"
+                    checkbox-multi
+                )
+                    thead   
+                        tr  
+                            th 
+                                input(type="checkbox" name="checkall")
+                            th STT
+                            th Hình ảnh
+                            th Tiêu đề
+                            th Vị trí
+                            th Trạng Thái
+                            th Hành Động 
+                    tbody 
+                        +table-tree(records)
+    script(src="/admin/js/product.js")
+    script(src="/admin/js/script.js")
+
